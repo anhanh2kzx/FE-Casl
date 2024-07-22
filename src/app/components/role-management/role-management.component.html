@@ -1,0 +1,130 @@
+<div class="row mt-3">
+  <div class="col-md-4">
+    <div>
+      <h1>Danh sach role</h1>
+    </div>
+    <p-table selectionMode="single"
+             [(selection)]="selected"
+             [rowHover]="true"
+             [value]="roles"
+             [tableStyle]="{ 'min-width': '50rem' }">
+      <ng-template pTemplate="header">
+        <tr>
+          <th>Id</th>
+          <th>name</th>
+        </tr>
+      </ng-template>
+      <ng-template pTemplate="body" let-user>
+        <tr [pSelectableRow]="user">
+          <td>{{ user.id }}</td>
+          <td>{{ user.name }}</td>
+        </tr>
+      </ng-template>
+    </p-table>
+    <div>Selected {{ selected | json }}</div>
+    <div>Role {{ role }}</div>
+  </div>
+  <div class="col-md-8">
+    <div class="card">
+      <div class="card">
+        <!--        <p-treeTable-->
+        <!--          [value]="files"-->
+        <!--          [columns]="cols"-->
+        <!--          selectionMode="checkbox"-->
+        <!--          [(selectionKeys)]="selectionKeys"-->
+        <!--          [(selection)]="selectedNodes3"-->
+        <!--          dataKey="key"-->
+        <!--          [scrollable]="true"-->
+        <!--          [tableStyle]="{ 'min-width': '50rem' }">-->
+        <!--          <ng-template pTemplate="header" let-columns>-->
+        <!--            <tr>-->
+        <!--              <th *ngFor="let col of columns">-->
+        <!--                {{ col.header }}-->
+        <!--              </th>-->
+        <!--            </tr>-->
+        <!--          </ng-template>-->
+        <!--          <ng-template pTemplate="body" let-rowNode let-rowData="rowData" let-columns="columns">-->
+        <!--            <tr [ttRow]="rowNode" [ttSelectableRow]="rowNode">-->
+        <!--              <td *ngFor="let col of columns; let i = index">-->
+        <!--                <p-treeTableToggler [rowNode]="rowNode" *ngIf="i === 0" />-->
+        <!--                <p-treeTableCheckbox [value]="rowNode" *ngIf="i === 0" />-->
+        <!--                {{ rowData[col.field] }}-->
+        <!--                        <ng-container *ngIf="col.header === 'Create'">-->
+        <!--                          <p-checkbox-->
+        <!--                            [binary]="true"-->
+        <!--                            (onChange)="checkChange($event, rowData)"-->
+        <!--                            inputId="binary" />-->
+        <!--                        </ng-container>-->
+        <!--                        <ng-container *ngIf="col.header === 'Read'">-->
+        <!--                          <p-checkbox-->
+        <!--                            [binary]="true"-->
+        <!--                            inputId="binary" />-->
+        <!--                        </ng-container>-->
+        <!--                        <ng-container *ngIf="col.header === 'Write'">-->
+        <!--                          <p-checkbox-->
+        <!--                            [binary]="true"-->
+        <!--                            inputId="binary" />-->
+        <!--                        </ng-container>-->
+        <!--              </td>-->
+        <!--            </tr>-->
+        <!--          </ng-template>-->
+        <!--        </p-treeTable>-->
+        <p-treeTable
+          [value]="files5"
+          [columns]="cols"
+          selectionMode="checkbox"
+          [(selection)]="selectedNodes3"
+        >
+          <ng-template pTemplate="caption">
+            <div class="flex">
+              <p-treeTableHeaderCheckbox></p-treeTableHeaderCheckbox>
+              <span class="ml-2">Toggle All</span>
+            </div>
+          </ng-template>
+          <ng-template pTemplate="header" let-columns>
+            <tr>
+              <th *ngFor="let col of columns">
+                {{ col.header }}
+              </th>
+            </tr>
+          </ng-template>
+          <ng-template
+            pTemplate="body"
+            let-rowNode
+            let-rowData="rowData"
+            let-columns="columns"
+          >
+            <tr>
+              <td *ngFor="let col of columns; let i = index">
+                <p-treeTableToggler
+                  [rowNode]="rowNode"
+                  *ngIf="i === 0"
+                ></p-treeTableToggler>
+                <p-treeTableCheckbox
+                  [value]="rowNode"
+                  *ngIf="i === 0"
+                ></p-treeTableCheckbox>
+                {{ rowData[col.field] }}
+                <ng-container *ngIf="col.header === 'Create'">
+                  <p-checkbox
+                    [binary]="true"
+                    (onChange)="checkChange($event, rowData)"
+                    inputId="binary" />
+                </ng-container>
+                <ng-container *ngIf="col.header === 'Read'">
+                  <p-checkbox
+                    [binary]="true"
+                    inputId="binary" />
+                </ng-container>
+                <ng-container *ngIf="col.header === 'Write'">
+                  <p-checkbox
+                    [binary]="true"
+                    inputId="binary" />
+                </ng-container>
+              </td>
+            </tr>
+          </ng-template>
+        </p-treeTable>
+      </div>
+    </div>
+  </div>
